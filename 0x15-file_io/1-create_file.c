@@ -22,12 +22,12 @@ int create_file(const char *filename, char *text_content)
 	}
 
 	fp = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
-	w = write(fd, text_content, len);
+	w = write(fp, text_content, len);
 
 	if (fp == -1 || w == -1)
 		return (-1);
 
-	close(fd);
+	close(fp);
 
 	return (1);
 }
