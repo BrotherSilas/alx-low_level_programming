@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdlib.h>
 #include <fcntl.h>
-
+#include <errno.h>
 /**
  * function: reads a text file and prints it to the POSIX standard output
  * letters is the number of letters it should read and print
@@ -10,30 +10,28 @@
  */
 
 ssize_t read_textfile(const char *filename, size_t letters)
-{
-int main(void) 
-	{
 
-	char buff[50], c;
-	ssize_t fp;
+{
+	char *buf;
+	ssize_t fd;
 	ssize_t w;
 	ssize_t t;
 
-		FILE *fp;
+	buf = malloc(sizeof(char) * letters);
+	t = read(fd, buf, letters);
+	w = write(STDOUT_FILENO, buf, t);
 
-fp = open("filename", O_RDONLY)
-	if (fp == NULL)
-			{
-		printf("Error!opening file");
-		return (0);
-} 
-while ((c = getc(fp) != EOF)
-					printf("%c", c);
-					buf = malloc(sizeof(char) * letters);
-					t = read(fp, buf, letters);
-					w = write(STDOUT_FILENO, buf, t);
 
-					close(fp);
+{
+	fd = open("*filename", O_RDONLY | O_CREAT);
 
-					return (0);
-					}
+	if (fd == -1)
+
+	return (0);
+}
+
+	free(buf);
+	close(fd);
+	return (w);
+
+}
