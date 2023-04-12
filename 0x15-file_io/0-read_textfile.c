@@ -10,26 +10,21 @@
  * Return:  Always 0 (Success)
  */
 
-int main(void)
-
 ssize_t read_textfile(const char *filename, size_t letters)
-	{
+{
+	char *buf;
+	ssize_t fd;
+	ssize_t a;
+	ssize_t b;
 
-	int fd, sz;
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	buf = malloc(sizeof(char) * letters);
+	a = read(fd, buf, letters);
+	b = write(STDOUT_FILENO, buf, a);
 
-	char *c = (char *) malloc(100, sizeof(char));
-
-	fd = open("filename.txt", O_RDONLY);
-	if (fd == NULL)
-
-	{
-	return (0);
-	}
-
-	sz = read(fd, c, 10);
-	printf("called read (%d, c, 10), and %d bytes were read.\n", fd, sz);
-	c[sz] = '\0';
-
-	printf("The bytes are: %s\n", c);
-	return (0);
-	}
+	free(buf);
+	close(fd);
+	return (b);
+}
