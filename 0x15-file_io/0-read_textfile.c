@@ -1,34 +1,34 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include <fcntl.h>
-#include <errno.h>
+
 /**
- * function: reads a text file and prints it to the POSIX standard output
+ * main - entry point
+ * Description: reads a text file and prints it to the POSIX standard output
  * letters is the number of letters it should read and print
- * returns the actual number of letters it could read and print
- * returns 0 when function fails or filename is NULL.
+ * Return:  Always 0 (Success)
  */
 
-ssize_t read_textfile(const char *filename, size_t letters)
+int main(void)
 
-	read_textfile(filename)
-{
-	char *buffer;
-	ssize_t o;
-	ssize_t w;
-	ssize_t r;
+	{
 
-	buffer = malloc(sizeof(char) * letters);
+	int fd, sz;
 
-{
-	FILE * fd
-	fd = open("filename", O_RDONLY | O_CREAT);
+	char *c = (char *) calloc(100, sizeof(char));
 
+	fd = open("filename.txt", O_RDONLY);
 	if (fd == NULL)
 
+	{
 	return (0);
-}
+	}
 
-	if (buffer == NULL)
+	sz = read(fd, c, 10);
+	printf("called read (%d, c, 10), and %d bytes were read.\n", fd, sz);
+	c[sz] = '\0';
+
+	printf("The bytes are: %s\n", c);
 	return (0);
-}
+	}
