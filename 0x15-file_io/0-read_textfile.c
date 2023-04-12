@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <fcntl.h>
+
 
 /**
  * main - entry point
@@ -17,7 +17,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	int fd, sz;
 
-	char *c = (char *) calloc(100, sizeof(char));
+	char *c = (char *) malloc(100, sizeof(char));
 
 	fd = open("filename.txt", O_RDONLY);
 	if (fd == NULL)
