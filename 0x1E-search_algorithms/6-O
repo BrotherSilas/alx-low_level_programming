@@ -1,16 +1,1 @@
-Primary Array Allocation:
-map = malloc(sizeof(int *) * n);
-This line allocates an array of n pointers to int. The space complexity for this is 
-𝑂(n)
-
-Secondary Array Allocations:
-Inside the loop, map[i] = malloc(sizeof(int) * m);
-For each of the n pointers, this line allocates an array of m integers.
-The space complexity for each of these allocations is 
-O(m).
-Since there are n such allocations, the total space complexity for these allocations is 
-O(n×m).
-
-Total Space Complexity:
-Combining the two components, the total space complexity of the function is 
 O(n+n×m)
